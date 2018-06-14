@@ -1,46 +1,47 @@
 
 # Dataiku Controller ------------------------------------------------------
 
-# # Set working directory ---------------------------------------------------
-# setwd("/Users/cassandrabayer/Desktop/Dataiku")
-# 
-# # Load Packages -----------------------------------------------------------
-# # load basic packages
-# library(data.table)
-# library(tidyr)
-# library(tidyverse)
-# library(stringr)
-# 
-# # visualization packages
-# library(ggplot2)
-# library(plotly)
-# 
-# # basic stats and prediction
-# library(stats)
-# library(forecast)
-# 
-# # Model Selection
-# library(MASS)
-# library(glmnet)
-# library(car)
-# library(caret)
-# 
-# # Dates
-# library(zoo)
-# library(lubridate)
+# Set working directory ---------------------------------------------------
+setwd("/Users/cassandrabayer/Desktop/Dataiku")
+
+# Load Packages -----------------------------------------------------------
+# load basic packages
+library(data.table)
+library(tidyr)
+library(tidyverse)
+library(stringr)
+
+# visualization packages
+library(ggplot2)
+library(plotly)
+
+# basic stats and prediction
+library(stats)
+library(forecast)
+
+# Model Selection
+library(MASS)
+library(glmnet)
+library(car)
+library(caret)
+
+# Dates
+library(zoo)
+library(lubridate)
 
 
-# Custom functions
+# Custom Functions --------------------------------------------------------------------------------------
 censusCleaner <- function(dt){
   ## I know I'm losing data but 1 row out of 200k will be of negligble significance in this case
   dt <- data.table(dt)
   
   setnames(dt, dput(names(dt)),
-           c("age", "classOfWorker", "industryRecode", "occRecode", "edu", "wageHr", "eduInLastWk", "maritalStat", "majorIndustry",
-             "majorOccCode", "race", "hispanic", "sex", "laborUnion", "unemploymentReason", "employmentStatus", 
-             "capGains", "capLoss", "stocks", "taxStatus", "region", "state", "hhStat", "hhSum", "instanceWt", "migrationMSA", "migrationReg",
-             "migrationWithInReg", "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "foreignDad",
-             "foreignMom", "foreign", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "wksWorkedPastYr", "year", "over50k"))
+           c("age", "classOfWorker", "industryRecode", "occRecode", "edu", "wageHr", "eduInLastWk", 
+             "maritalStat", "majorIndustry", "majorOccCode", "race", "hispanic", "sex", "laborUnion", 
+             "unemploymentReason", "employmentStatus", "capGains", "capLoss", "stocks", "taxStatus", "region", 
+             "state", "hhStat", "hhSum", "instanceWt", "migrationMSA", "migrationReg", "migrationWithInReg", 
+             "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "foreignDad", "foreignMom",
+             "foreign", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "wksWorkedPastYr", "year", "over50k"))
   
   ## Clean up the missing data and handle for white space
   dt <- dt[, lapply(.SD, function(x) str_replace(x, "Not in universe", "NA"))]
@@ -82,10 +83,14 @@ censusCleaner <- function(dt){
   dt[, unemployed := 0]
   dt[classOfWorker %in% c("Without pay", "Never Worked"), unemployed := 1]
   
-  dt[, blueCollor := 0]
-  dt[majorIndustry %in% c("Construction", "Business and repair services", "Manufacturing-nondurable goods", "Mining", 
-                          "Transportation", "Wholesale trade", "Private household services", "Utilities and sanitary services",
-                          "Agriculture", "Armed Forces"), blueCollar := 1]
+  dt[, blueCollar := 0]
+  dt[majorIndustry %in% c("Construction", "Business and repair services", 
+                          "Manufacturing-nondurable goods", "Mining", 
+                          "Transportation", "Wholesale trade", 
+                          "Private household services", "Utilities and sanitary services",
+                          "Agriculture", "Armed Forces"), 
+     blueCollar := 1]
+  
   dt[, whiteCollar := 0]
   dt[blueCollar == 0, whiteCollar := 1]
   
@@ -102,7 +107,7 @@ censusCleaner <- function(dt){
   dt[edu %in% c("Associates degree-occup /vocational", "Bachelors degree(BA AB BS)"), college := 1]
   
   dt[edu %in% c("Doctorate degree(PhD EdD)", "Prof school degree (MD DDS DVM LLB JD)", 
-                  "Masters degree(MA MS MEng MEd MSW MBA)"), aboveCollege := 1]
+                "Masters degree(MA MS MEng MEd MSW MBA)"), aboveCollege := 1]
   
   dt[edu == "Doctorate degree(PhD EdD)", aboveMasters := 1]
   
@@ -112,11 +117,17 @@ censusCleaner <- function(dt){
   dt[, single := 1]
   
   dt[maritalStat == "Divorced", divorced := 1]
-  dt[grepl(maritalStat, "Married"), married := 1]
+  dt[grepl(x = maritalStat, pattern = "Married"), married := 1]
   dt[married == 1, single := 0]
   
   dt[, householder := 0]
   dt[hhStat == "Householder", householder := 1]
+  
+  dt[, bothParents := 0]
+  dt[fam18under == "Both parents present", bothParents := 1]
+  
+  dt[, children := 0]
+  dt[!is.na(fam18under), children := 1]
   
   ## Update any data types
   dt[, `:=`(age = as.integer(age),
@@ -143,15 +154,17 @@ censusCleaner <- function(dt){
   
   dt[white == 1 & divorced == 1 & sex == "Female", whiteDivorcedF := 1]
   dt[black == 1 & divorced == 1 & sex == "Female", blackDivorcedF := 1]
-  dt[black == 1 & hispanic == 1 & sex == "Female", hispanicDivorcedF := 1]
+  dt[hispanic == 1 & hispanic == 1 & sex == "Female", hispanicDivorcedF := 1]
   
   dt[white == 1 & divorced == 1 & sex == "Male", whiteDivorcedM := 1]
   dt[black == 1 & divorced == 1 & sex == "Male", blackDivorcedM := 1]
-  dt[black == 1 & hispanic == 1 & sex == "Male", hispanicDivorcedM := 1]
+  dt[hispanic == 1 & divorced == 1 & sex == "Male", hispanicDivorcedM := 1]
   
-  ## Exclude any column that has overwhelming missing data
-  summary(is.na(dt))
-  ## Exclude duplicative or irrelevant columns
+  ## Exclude duplicative or irrelevant columns (or those with mostly missing data)
+  dt <- dt[, .(age, ageSq, sex, normalizedWageHr, foreignDad, foreignMom, foreign, wksWorkedPastYr, year, black, 
+               white, hispanic, unemployed,blueCollar, whiteCollar, belowCollege, college, aboveCollege, 
+               aboveMasters, divorced, married, single, householder, bothParents, children, whiteDivorcedF, 
+               blackDivorcedF, hispanicDivorcedF, whiteDivorcedM, blackDivorcedM, hispanicDivorcedM, over50k)]
   
   
   
@@ -159,10 +172,9 @@ censusCleaner <- function(dt){
 }
 
 # Load Data ---------------------------------------------------------------
-#census_train <- read.csv(file = "census_income_learn.csv", stringsAsFactors = F, header = T)
-#census_test <- read.csv(file = "census_income_test.csv", stringsAsFactors = F, header = T)
+census_train <- read.csv(file = "census_income_learn.csv", stringsAsFactors = F, header = T)
+census_test <- read.csv(file = "census_income_test.csv", stringsAsFactors = F, header = T)
 
 # Light Pre Processing ----------------------------------------------------
-test <- censusCleaner(census_train)
-#census_train <- censusCleaner(census_train)
-#census_test <- censusCleaner(census_test)
+census_train <- censusCleaner(census_train)
+census_test <- censusCleaner(census_test)

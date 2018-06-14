@@ -131,3 +131,35 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git commit -m "added interaction variabls a[K[K[Kes and more binaries to the controller"
+[master 6272d0c] added interaction variables and more binaries to the controller
+ 7 files changed, 240 insertions(+), 86 deletions(-)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/AE5B78D-contents
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/79FC296B/console06/2CEFC2E8[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/9DCC5261[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/INDEX[m
+	[31mdeleted:    .Rproj.user/79FC296B/sources/s-211DBB81/6C0E7E13[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-211DBB81/F158B72F[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-211DBB81/F158B72F-contents[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+	[31mmodified:   controller.R[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.Rproj.user/79FC296B/sources/prop/87188EEE[m
+	[31m.Rproj.user/79FC296B/sources/s-211DBB81/3E43F971-contents[m
+	[31m.Rproj.user/79FC296B/sources/s-211DBB81/9F0BC23C[m
+	[31m.Rproj.user/79FC296B/sources/s-211DBB81/9F0BC23C-contents[m
+	[31m.Rproj.user/79FC296B/sources/s-211DBB81/E92E08AA-contents[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/[m
+	[31mmodelingAnalysis.Rmd[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .

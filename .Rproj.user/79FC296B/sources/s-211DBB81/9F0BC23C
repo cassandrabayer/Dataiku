@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1529016985426.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3358601459",
+    "id" : "9F0BC23C",
+    "lastKnownWriteTime" : 1529017025,
+    "last_content_update" : 1529017025341,
+    "path" : "~/Desktop/Dataiku/modelingAnalysis.Rmd",
+    "project_path" : "modelingAnalysis.Rmd",
+    "properties" : {
+        "cursorPosition" : "9,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
