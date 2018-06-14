@@ -65,3 +65,9 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git commit -m "cleaned up the header names ()c)[1P)v)i)n)t)a)g)e) )[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)c)l)a)s)s)i)c) )C)e)n)s)u)s) )d)a)[1P)a)t)a)[C"
+[master cf624d0] cleaned up the header names (classic Census data)
+ 8 files changed, 125 insertions(+), 14 deletions(-)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/6C0E7E13
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/6C0E7E13-contents
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
