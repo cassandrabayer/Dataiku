@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1528936202470.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "6C0E7E13",
+    "lastKnownWriteTime" : 4294967302,
+    "last_content_update" : 1528936202470,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "F1AF120C",
+        "caption" : "rowToAppend",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=rowToAppend&cache_key=F1AF120C",
+        "displayedObservations" : 1,
+        "environment" : "",
+        "object" : "rowToAppend",
+        "preview" : 0,
+        "totalObservations" : 1,
+        "variables" : 42
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
