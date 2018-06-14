@@ -96,4 +96,4 @@ and the repository exists.
  6 files changed, 231 insertions(+), 195 deletions(-)
  rewrite .Rproj.user/79FC296B/sources/s-211DBB81/F158B72F-contents (77%)
  rewrite controller.R (77%)
-]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ 
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
