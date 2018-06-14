@@ -75,3 +75,13 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [master 0a12bd3] light processing
  5 files changed, 67 insertions(+), 21 deletions(-)
 ]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ gt [K[Kit add .
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git commit -m "handled for missing values (standardized" [K[K) and binaries"
+[master 16351aa] handled for missing values (standardized) and binaries
+ 5 files changed, 83 insertions(+), 23 deletions(-)
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git push origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ 
