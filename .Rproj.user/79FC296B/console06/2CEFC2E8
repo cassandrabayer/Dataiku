@@ -91,3 +91,9 @@ fatal: Could not read from remote repository.
 Please make sure you have the correct access rights
 and the repository exists.
 ]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ g[K[KCassandras-Air:Dataiku cassandrabayer$ git add .
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git commit -m "cleaning up the binaries"
+[master dcc9b09] cleaning up the binaries
+ 6 files changed, 231 insertions(+), 195 deletions(-)
+ rewrite .Rproj.user/79FC296B/sources/s-211DBB81/F158B72F-contents (77%)
+ rewrite controller.R (77%)
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ 
