@@ -41,25 +41,53 @@ setnames(census_train, dput(names(census_train)),
          c("age", "classOfWorker", "industry", "adjGrossIncome", "edu", "wageHr", "eduInLastWk", "maritalStat", "majorIndustry",
            "occupation code", "race", "hispanic", "sex", "laborUnion", "unemploymentReason", "employmentStatus", "capGains", "capLoss",
            "stocks", "fedIncTaxLiable", "taxStatus", "region", "state", "hhStat", "instanceWt", "migrationMSA", "migrationReg",
-           "migrationWithInReg", "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "fatherOrigin",
-           "motherOrigin", "selfOrigin", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "weeksWorkedPastYr", "year", "over50k"))
+           "migrationWithInReg", "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "foreignDad",
+           "foreignMom", "foreign", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "weeksWorkedPastYr", "year", "over50k"))
 
-setnames(census_test, dput(names(census_test)),
+setnames(census_test, dput(names(census_train)),
          c("age", "classOfWorker", "industry", "adjGrossIncome", "edu", "wageHr", "eduInLastWk", "maritalStat", "majorIndustry",
            "occupation code", "race", "hispanic", "sex", "laborUnion", "unemploymentReason", "employmentStatus", "capGains", "capLoss",
            "stocks", "fedIncTaxLiable", "taxStatus", "region", "state", "hhStat", "instanceWt", "migrationMSA", "migrationReg",
-           "migrationWithInReg", "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "fatherOrigin",
-           "motherOrigin", "selfOrigin", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "weeksWorkedPastYr", "year", "over50k"))
+           "migrationWithInReg", "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "foreignDad",
+           "foreignMom", "foreign", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "weeksWorkedPastYr", "year", "over50k"))
 
 
 # Light Processing --------------------------------------------------------
+## Clean up the missing data
+census_train <- census_train[, lapply(.SD, function(x) str_replace(x, "Not in universe", "NA"))]
+census_test <- census_test[, lapply(.SD, function(x) str_replace(x, "Not in universe", "NA"))]
+
+census_train <- census_train[, lapply(.SD, function(x) str_replace(x, "[?]", "NA"))]
+census_test <- census_test[, lapply(.SD, function(x) str_replace(x, "[?]", "NA"))]
+
+## Clean up the binaries 
 census_train[grepl(x = over50k, pattern = "-"), over50k := "0"]
 census_train[grepl(x = over50k, pattern = "+"), over50k := "1"]
 
 census_test[grepl(x = over50k, pattern = "-"), over50k := "0"]
 census_test[grepl(x = over50k, pattern = "+"), over50k := "1"]
 
-census_train[, .SD := str_replace(.SD, "Not in universe", "NA"), .SDcols = names(census_train)]
-sapply(census_test, str_replace)
+census_train[foreignDad == " United-States" | foreignMom == " United-States" | foreign == " United-States",
+             `:=`(foreignDad = "0",
+                  foreignMom = "0",
+                  foreign = "0")]
 
-class(cent)
+census_train[foreignDad != "0" | foreignMom != "0" | foreign != "0",
+             `:=`(foreignDad = "1",
+                  foreignMom = "1",
+                  foreign = "1")]
+
+
+census_test[foreignDad == " United-States" | foreignMom == " United-States" | foreign == " United-States",
+             `:=`(foreignDad = "0",
+                  foreignMom = "0",
+                  foreign = "0")]
+
+census_test[foreignDad != "0" | foreignMom != "0" | foreign != "0",
+             `:=`(foreignDad = "1",
+                  foreignMom = "1",
+                  foreign = "1")]
+
+## Update any data types
+
+
