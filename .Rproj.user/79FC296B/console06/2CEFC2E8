@@ -334,3 +334,54 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git commit -m "handled for missing to[K[Kand captured-- need to finalize write ups"
+[master ab37a92] handled for missing and captured-- need to finalize write ups
+ 29 files changed, 156 insertions(+), 50 deletions(-)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/36866C08-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/65F80AC4-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/9A550313-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/AA5CB0D3-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/C0DE7C6D-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/CB332994-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/EC7FA2A4-contents
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c1ifymotllh4d/000022.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c1ifymotllh4d/000022.png
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c1ifymotllh4d/000022.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000008.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000008.png
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000008.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c94682qkyf8tz/00001e.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c94682qkyf8tz/00001e.png
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c94682qkyf8tz/00001e.snapshot
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cfit1caozk1r8/000013.error
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cfit1caozk1r8/000017.error
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git push origin master
+git: 'credential-C17a20K22!' is not a git command. See 'git --help'.
+To https://github.com/cassandrabayer/Dataiku.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/cassandrabayer/Dataiku.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git push origin master
+git: 'credential-C17a20K22!' is not a git command. See 'git --help'.
+To https://github.com/cassandrabayer/Dataiku.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/cassandrabayer/Dataiku.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/79FC296B/console06/2CEFC2E8[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
