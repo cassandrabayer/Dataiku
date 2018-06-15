@@ -29,6 +29,12 @@ library(glmnet)
 library(car)
 library(caret)
 
+# Validation
+library(pscl)
+library(pROC)
+library(ROCR)
+library(e1071)
+
 # Dates
 library(zoo)
 library(lubridate)
@@ -39,6 +45,8 @@ library(lubridate)
 #   numMissing <- dt[is.na(col) | col == "NA", .N]
 #   return(numMissing)
 # }
+
+
 
 censusCleaner <- function(dt){
   ## I know I'm losing data but 1 row out of 200k will be of negligble significance in this case

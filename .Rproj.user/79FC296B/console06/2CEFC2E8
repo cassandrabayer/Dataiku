@@ -240,3 +240,46 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git commit -m "swimming in a sea of models"
+[master 8bb652b] swimming in a sea of models
+ 19 files changed, 292 insertions(+), 39 deletions(-)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/46543223-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/76E1E504
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/76E1E504-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/7F876B80-contents
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B211DBB81/chunks.json (100%)
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000003.error
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/chunks.json (100%)
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cis6pfwpwsegy/000003.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cis6pfwpwsegy/000003.png
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cis6pfwpwsegy/000003.snapshot
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/79FC296B/console06/2CEFC2E8[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/87188EEE[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/9DCC5261[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-211DBB81/9F0BC23C[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-211DBB81/9F0BC23C-contents[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-211DBB81/F158B72F[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-211DBB81/F158B72F-contents[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B211DBB81/chunks.json[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000003.error[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/chunks.json[m
+	[31mmodified:   controller.R[m
+	[31mmodified:   modelingAnalysis.Rmd[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6il06tyzny5e/[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cbar1qrm7k76n/[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cfit1caozk1r8/[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cgjss3v8bpj6o/[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cp5ac5korcnmu/[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/DataikuCassandras-Air:Dataiku cassandrabayer$ git add .

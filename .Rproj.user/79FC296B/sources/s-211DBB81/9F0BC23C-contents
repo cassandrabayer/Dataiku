@@ -27,24 +27,18 @@ for(i in 1:ncol(census_train)) {
 
 ```
 
-
+I want to get a sense of any missing data still remaining in the data.
 ```{r}
 missmap(census_train, col=c("blue", "red"), legend=FALSE)
 ```
 
-
+Now I want to get a sense of how my variables are correlated. I suspect some covariance, but that's expected
+given the nature of the dummy variables (where sex is female, it cnanot also be male; I would anticipate those
+to be perfectly inversely related). However, I'm interested to see if any of these variables correlate with 
+variables outside of their binary counterparts.
 ```{r}
 corr <- cor(census_train)
 corrplot(corr, method="circle")
-```
-
-
-```{r}
-pairs(census_train[1:5], col=census_train$over50k)
-x <- census_train[,1:10]
-y <- census_train[,32]
-scales <- list(x=list(relation="free"), y=list(relation="free"))
-featurePlot(x=x, y=y, plot="density", scales=scales)
 ```
 
 
@@ -52,34 +46,93 @@ Create a model using these variables (you can use whichever variables you want, 
 
 First, I run a simple logistic regression using all the variables in my arsenal. The output shows me that,
 given my model, only 347 respondents make over 50k and the rest under 50k. Because I have labeled data, I know
+the rate to be much higher. As it stands, the proportion of those making over 50k is about 6%, whereas my model
+predicts less than 1%. There is some work to be done.
 ```{r}
-lm <- glm(data = census_train,formula =  over50k ~ .)
+lm <- glm(data = census_train,formula =  over50k ~ ., family=binomial(link= "logit"))
 summary(lm)
+plot(lm$fitted.values)
+plot(lm$residuals)
 glm.probs <- predict(lm,type = "response")
 glm.pred <- ifelse(glm.probs > 0.5, "Over 50k", "Under 50k")
 table(glm.pred)
 ```
 
-Using a stepwise model, I find the ideal formula, which selects only the variables of importance. However,
-since there are still many variables, I suspect overfitting.
+Using a stepwise model, I find the ideal formula, which selects only the variables of importance. I find that 
+ageSq, male, normalizedWageHr, foreignDad, wksWorkedHowever,
+since there are still many variables, I suspect overfitting. In fact, running a quick test for false R^2s, my 
+McFadden test shows that there is little difference between the two models that I have constructed. To the ROC curve!
 ```{r}
 step.model <- stepAIC(lm, direction = "both", 
                       trace = FALSE)
 summary(step.model)
-anova(lm, step.model$call, test ="Chisq")
-install.packages("pscl")
-library(pscl)
+
+lm2 <- glm(formula = over50k ~ ageSq + male + normalizedWageHr + foreignDad + 
+    wksWorkedPastYr + black + unemployed + belowCollege + college + 
+    aboveMasters + married + householder + bothParents + blackDivorcedM + 
+    hispanicDivorcedM, data = census_train, family = binomial(link = "logit"))
+abline(lm$residuals)
+anova(lm)
+anova(lm2)
+pR2(lm2)
 pR2(lm)
-pR2(step.model)
 ```
 
 ```{r}
-pred = predict(lm, newdata=census_test)
-accuracy <- table(pred, testing[,"Class"])
-sum(diag(accuracy))/sum(accuracy)
-## [1] 0.705
-pred = predict(mod_fit, newdata=testing)
-confusionMatrix(data=pred, testing$Class)
+predResults <- predict(lm2, newdata=census_test,type='response')
+predResults <- ifelse(predResults > 0.5,1,0)
+
+misClasificError <- mean(predResults != census_test$over50k, na.rm = T)
+print(paste('Accuracy',1-misClasificError))
+
+```
+
+https://www.r-bloggers.com/how-to-perform-a-logistic-regression-in-r/
+```{r}
+performance <- prediction(predResults, census_test$over50k)
+prf <- performance(performance, measure = "tpr", x.measure = "fpr")
+plot(prf)
+
+auc <- performance(performance, measure = "auc")
+auc <- auc@y.values[[1]]
+auc
+
+```
+But what about an SVM? https://www.r-bloggers.com/machine-learning-using-support-vector-machines/
+```{r}
+library(e1071)
+ 
+#Fit a model. The function syntax is very similar to lm function
+svm <- svm(over50k ~ ageSq + male + normalizedWageHr + foreignDad + 
+    wksWorkedPastYr + black + unemployed + belowCollege + college + 
+    aboveMasters + married + householder + bothParents + blackDivorcedM + 
+    hispanicDivorcedM, data = census_train)
+ 
+#Use the predictions on the data
+svmPred <- predict(svm, census_train)
+ 
+```
+
+Compare errors between logit and svm
+```{r}
+error_lm <- lm2$residuals
+ 
+lm2_error <- sqrt(mean(error_lm^2)) # 15.7
+ 
+#For svm, we have to manually calculate the difference between actual values (train$y) with our predictions (pred)
+ 
+error_svm <- census_train$over50k - svmPred
+ 
+svm_error <- sqrt(mean(error_svm^2)) #.22 
+
+## could also tune
+```
+
+Lastly, a decision tree http://trevorstephens.com/kaggle-titanic-tutorial/r-part-3-decision-trees/
+```{r}
+fit <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,
+               data=train,
+               method="class")
 ```
 
 Choose the model that appears to have the highest performance based on a comparison between reality (the 42nd variable) and the model’s prediction. 
