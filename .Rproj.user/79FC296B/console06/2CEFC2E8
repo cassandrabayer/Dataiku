@@ -614,3 +614,48 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ gt add .
 bash: gt: command not found
 ]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git add .
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git commit -m "ran through svm"
+[master 197976e] ran through svm
+ 13 files changed, 99 insertions(+), 26 deletions(-)
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B9254A664/chunks.json (68%)
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.png (93%)
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/chunks.json (68%)
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/00000f.error
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000014.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000014.rdf
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cvh2kaay38eeh/00000c.png (96%)
+]0;~/Desktop/Dataiku[?1034hCassandras-MacBook-Air:Dataiku cassandrabayer$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/79FC296B/console06/2CEFC2E8[m
+	[31mmodified:   .Rproj.user/79FC296B/console06/INDEX001[m
+	[31mmodified:   .Rproj.user/79FC296B/pcs/source-pane.pper[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/87188EEE[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/9DCC5261[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-9254A664/9F0BC23C[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-9254A664/9F0BC23C-contents[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-9254A664/F158B72F[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B9254A664/chunks.json[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.snapshot[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/chunks.json[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000014.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000014.rdf[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cngt2icv23i7u/000003.error[m
+	[31mmodified:   modelingAnalysis.Rmd[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.Rproj.user/79FC296B/explorer-cache/0bdc761a8a3b489c9c1b2982be8ffa5f[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000007.error[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000013.error[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git add ,
+fatal: pathspec ',' did not match any files
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git add .

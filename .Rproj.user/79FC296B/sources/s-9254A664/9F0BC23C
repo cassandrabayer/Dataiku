@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "9F0BC23C",
-    "lastKnownWriteTime" : 1529083317,
-    "last_content_update" : 1529083317569,
+    "lastKnownWriteTime" : 1529086788,
+    "last_content_update" : 1529086788665,
     "path" : "~/Desktop/Dataiku/modelingAnalysis.Rmd",
     "project_path" : "modelingAnalysis.Rmd",
     "properties" : {
-        "cursorPosition" : "191,22",
-        "scrollLine" : "171",
+        "cursorPosition" : "234,118",
+        "scrollLine" : "197",
         "tempName" : "Untitled1"
     },
     "relative_order" : 2,
