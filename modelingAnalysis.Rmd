@@ -66,6 +66,12 @@ missmap(census_train, col=c("blue", "red"), legend=FALSE)
 
 ```
 
+Now that we know what's missing, let's drop missing values.
+```{r}
+census_train <- na.omit(census_train)
+census_test <- na.omit(census_test)
+```
+
 Now I want to get a sense of how my variables are correlated. I suspect some covariance, but that's expected
 given the nature of the dummy variables (where sex is female, it cnanot also be male; I would anticipate those
 to be perfectly inversely related). However, I'm interested to see if any of these variables correlate with 
@@ -159,23 +165,25 @@ svm <- svm(over50k ~ ageSq + male + normalizedWageHr + foreignDad +
     wksWorkedPastYr + black + unemployed + belowCollege + college + 
     aboveMasters + married + householder + bothParents + blackDivorcedM + 
     hispanicDivorcedM, data = census_train)
-
-svmPred <- predict(svm, census_train) 
-svmPred <- prediction(svm, census_test$over50k)
+svmPred <- predict(svm, census_train)
+svmPrediction <- prediction(svmPred, census_test$over50k)
 
 ```
 
-Now I want to compare the errors between my first model and ny svm model.
+Now I want to compare the errors between my first model and ny svm model. The errors from the svm are naturally
+much smaller. This is intuitive because SVM is designed to handled irregularly distributed data as well as data
+with higher dimensionality.
 ```{r}
 error_lm <- lm2$residuals
-lm2_error <- sqrt(mean(error_lm^2)) # 15.7
+lm2_error <- sqrt(mean(error_lm^2))
  
 error_svm <- census_train$over50k - svmPred
-svm_error <- sqrt(mean(error_svm^2)) #.22 
+svm_error <- sqrt(mean(error_svm^2))  
+table(svm_error, lm2_error)
 
 ```
 
-Lastly, a decision tree
+Lastly, out of curiosity, I construct a decision tree.
 ```{r}
 
 tree <- tree(over50k ~ ageSq + male + normalizedWageHr + foreignDad + 

@@ -557,3 +557,60 @@ bash: Added: command not found
  create mode 100644 server.R
  create mode 100644 ui.R
 git add .
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git commit -m "finalize[King right up)[K"
+[master 95fa200] finalizing right up
+ 33 files changed, 232 insertions(+), 137 deletions(-)
+ rewrite .Rproj.user/79FC296B/console06/INDEX001 (84%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/50FCAC1B (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/50FCAC1B-contents (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/6C106AE6 (79%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/6C106AE6-contents (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/76E1E504 (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/76E1E504-contents (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/8C05FD2A (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/8C05FD2A-contents (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/9F0BC23C (71%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/9F0BC23C-contents (58%)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-9254A664/B0F3DD5D
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B/F2A69F16-contents => s-9254A664/B0F3DD5D-contents} (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/F158B72F (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/F158B72F-contents (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B => s-9254A664}/F2A69F16 (100%)
+ rename .Rproj.user/79FC296B/sources/{s-A783E30B/lock_file => s-9254A664/F2A69F16-contents} (100%)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-9254A664/lock_file
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B9254A664/chunks.json
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.png
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cbdp9b4idu1m6/000007.error
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/00000f.error
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cngt2icv23i7u/000003.error
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cvh2kaay38eeh/00000c.png (97%)
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ ran[K[K[Kgit status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/79FC296B/console06/2CEFC2E8[m
+	[31mmodified:   .Rproj.user/79FC296B/console06/2CEFC2E8.env[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/prop/87188EEE[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-9254A664/9F0BC23C[m
+	[31mmodified:   .Rproj.user/79FC296B/sources/s-9254A664/9F0BC23C-contents[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B9254A664/chunks.json[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cahugrkmaysbl/000002.png[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/chunks.json[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/00000f.error[m
+	[31mmodified:   .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cvh2kaay38eeh/00000c.png[m
+	[31mmodified:   modelingAnalysis.Rmd[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000014.metadata[m
+	[31m.Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/ciupetrb0q747/000014.rdf[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ gt add .
+bash: gt: command not found
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git add .
