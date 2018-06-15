@@ -4,16 +4,82 @@ author: "Cassandra Bayer"
 date: "6/14/2018"
 output: html_document
 ---
+Source the controller 
+```{r}
+source("controller.R")
+```
 
 Make a quick statistic based and univariate audit of the different columns’ content and produce the results in visual / graphic format. This audit should describe the variable distribution, the % of missing values, the extreme values, and so on.
 ```{r}
+summary(census_train)
+
+# First I want to get a basic summary of my data. However, since my custom data is mostly binary, this is not 
+# helpful, nor intuitive. So I do that only for my integer data types.
+intData <- select_if(census_train, is.integer)
+summary(intData)
+
+# For the rest of the data, I was to get an idea of frequencies.
+
+for(i in 1:ncol(census_train)) {
+  histogram(census_train[,i, with = F], plot = names(census_train)[i])
+}
 
 
 ```
 
-Create a model using these variables (you can use whichever variables you want, or even create you own; for example, you could find the ratio or relationship between different variables, the one-hot encoding of “categorical” variables, etc.) to model wining more or less than $50,000 / year. Here, the idea would be for you to test one or two algorithms, such as logistic regression, or a decision tree. Feel free to choose others if wish.
+
 ```{r}
-summary(cars)
+missmap(census_train, col=c("blue", "red"), legend=FALSE)
+```
+
+
+```{r}
+corr <- cor(census_train)
+corrplot(corr, method="circle")
+```
+
+
+```{r}
+pairs(census_train[1:5], col=census_train$over50k)
+x <- census_train[,1:10]
+y <- census_train[,32]
+scales <- list(x=list(relation="free"), y=list(relation="free"))
+featurePlot(x=x, y=y, plot="density", scales=scales)
+```
+
+
+Create a model using these variables (you can use whichever variables you want, or even create you own; for example, you could find the ratio or relationship between different variables, the one-hot encoding of “categorical” variables, etc.) to model wining more or less than $50,000 / year. Here, the idea would be for you to test one or two algorithms, such as logistic regression, or a decision tree. Feel free to choose others if wish.
+
+First, I run a simple logistic regression using all the variables in my arsenal. The output shows me that,
+given my model, only 347 respondents make over 50k and the rest under 50k. Because I have labeled data, I know
+```{r}
+lm <- glm(data = census_train,formula =  over50k ~ .)
+summary(lm)
+glm.probs <- predict(lm,type = "response")
+glm.pred <- ifelse(glm.probs > 0.5, "Over 50k", "Under 50k")
+table(glm.pred)
+```
+
+Using a stepwise model, I find the ideal formula, which selects only the variables of importance. However,
+since there are still many variables, I suspect overfitting.
+```{r}
+step.model <- stepAIC(lm, direction = "both", 
+                      trace = FALSE)
+summary(step.model)
+anova(lm, step.model$call, test ="Chisq")
+install.packages("pscl")
+library(pscl)
+pR2(lm)
+pR2(step.model)
+```
+
+```{r}
+pred = predict(lm, newdata=census_test)
+accuracy <- table(pred, testing[,"Class"])
+sum(diag(accuracy))/sum(accuracy)
+## [1] 0.705
+pred = predict(mod_fit, newdata=testing)
+confusionMatrix(data=pred, testing$Class)
 ```
 
 Choose the model that appears to have the highest performance based on a comparison between reality (the 42nd variable) and the model’s prediction. 

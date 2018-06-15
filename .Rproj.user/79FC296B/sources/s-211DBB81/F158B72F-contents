@@ -14,10 +14,14 @@ library(stringr)
 # visualization packages
 library(ggplot2)
 library(plotly)
+library(Hmisc)
 
 # basic stats and prediction
+library(corrplot)
 library(stats)
 library(forecast)
+library(Amelia)
+library(mlbench)
 
 # Model Selection
 library(MASS)
@@ -31,6 +35,11 @@ library(lubridate)
 
 
 # Custom Functions --------------------------------------------------------------------------------------
+# anyMissing <- function(col) {
+#   numMissing <- dt[is.na(col) | col == "NA", .N]
+#   return(numMissing)
+# }
+
 censusCleaner <- function(dt){
   ## I know I'm losing data but 1 row out of 200k will be of negligble significance in this case
   dt <- data.table(dt)
@@ -43,6 +52,9 @@ censusCleaner <- function(dt){
              "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "foreignDad", "foreignMom",
              "foreign", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "wksWorkedPastYr", "year", "over50k"))
   
+  ## Count missing and store
+  #missing <- colSums(lapply(dt, function(x) anyMissing(x)))
+  
   ## Clean up the missing data and handle for white space
   dt <- dt[, lapply(.SD, function(x) str_replace(x, "Not in universe", "NA"))]
   dt <- dt[, lapply(.SD, function(x) str_replace(x, "[?]", "NA"))]
@@ -53,6 +65,12 @@ censusCleaner <- function(dt){
   ### Binary for the dependent var
   dt[grepl(x = over50k, pattern = "-"), over50k := "0"]
   dt[over50k != "0", over50k := "1"]
+  
+  ## Binaries for sex
+  dt[, female := 0]
+  dt[, male := 0]
+  dt[sex == "Female", female := 1]
+  dt[sex == "Male", male := 1]
   
   ### Binary for race/citizenship
   dt[foreignDad == " United-States" | foreignMom == "United-States" | foreign == "United-States",
@@ -146,27 +164,31 @@ censusCleaner <- function(dt){
   dt[, ageSq := age^2]
   
   dt[, whiteDivorcedF := 0]
-  dt[, blackeDivorcedF := 0]
+  dt[, blackDivorcedF := 0]
   dt[, hispanicDivorcedF := 0]
   dt[, whiteDivorcedM := 0]
   dt[, blackDivorcedM := 0]
   dt[, hispanicDivorcedM := 0]
   
-  dt[white == 1 & divorced == 1 & sex == "Female", whiteDivorcedF := 1]
-  dt[black == 1 & divorced == 1 & sex == "Female", blackDivorcedF := 1]
-  dt[hispanic == 1 & hispanic == 1 & sex == "Female", hispanicDivorcedF := 1]
+  dt[white == 1 & divorced == 1 & female == 1, whiteDivorcedF := 1]
+  dt[black == 1 & divorced == 1 & female == 1, blackDivorcedF := 1]
+  dt[hispanic == 1 & hispanic == 1 & female == 1, hispanicDivorcedF := 1]
   
-  dt[white == 1 & divorced == 1 & sex == "Male", whiteDivorcedM := 1]
-  dt[black == 1 & divorced == 1 & sex == "Male", blackDivorcedM := 1]
-  dt[hispanic == 1 & divorced == 1 & sex == "Male", hispanicDivorcedM := 1]
+  dt[white == 1 & divorced == 1 & male == 1, whiteDivorcedM := 1]
+  dt[black == 1 & divorced == 1 & male == 1, blackDivorcedM := 1]
+  dt[hispanic == 1 & divorced == 1 & male == 1, hispanicDivorcedM := 1]
+  
+  ## Count missing values
+  #missing <- lapply(dt, function (x) colSums())
+  
+  ## any final cleaning
+  dt <- dt[, lapply(.SD, function(x) as.integer(x))]
   
   ## Exclude duplicative or irrelevant columns (or those with mostly missing data)
-  dt <- dt[, .(age, ageSq, sex, normalizedWageHr, foreignDad, foreignMom, foreign, wksWorkedPastYr, year, black, 
+  dt <- dt[, .(age, ageSq, male, female, normalizedWageHr, foreignDad, foreignMom, foreign, wksWorkedPastYr, black, 
                white, hispanic, unemployed,blueCollar, whiteCollar, belowCollege, college, aboveCollege, 
                aboveMasters, divorced, married, single, householder, bothParents, children, whiteDivorcedF, 
                blackDivorcedF, hispanicDivorcedF, whiteDivorcedM, blackDivorcedM, hispanicDivorcedM, over50k)]
-  
-  
   
   return(dt)
 }
