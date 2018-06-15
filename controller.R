@@ -15,6 +15,10 @@ library(stringr)
 library(ggplot2)
 library(plotly)
 library(Hmisc)
+library(RColorBrewer)
+library(rattle)
+library(rpart.plot)
+
 
 # basic stats and prediction
 library(corrplot)
@@ -22,6 +26,9 @@ library(stats)
 library(forecast)
 library(Amelia)
 library(mlbench)
+library(rpart)
+library(tree)
+library(e1071)
 
 # Model Selection
 library(MASS)
@@ -33,7 +40,6 @@ library(caret)
 library(pscl)
 library(pROC)
 library(ROCR)
-library(e1071)
 
 # Dates
 library(zoo)
@@ -60,15 +66,16 @@ censusCleaner <- function(dt){
              "house1PlusYr", "prevResInSunbelt", "pplWorkForEmp", "fam18under", "foreignDad", "foreignMom",
              "foreign", "citizenship", "bizOrSelfEmp", "vetAdmin", "vetBens", "wksWorkedPastYr", "year", "over50k"))
   
-  ## Count missing and store
-  #missing <- colSums(lapply(dt, function(x) anyMissing(x)))
-  
   ## Clean up the missing data and handle for white space
-  dt <- dt[, lapply(.SD, function(x) str_replace(x, "Not in universe", "NA"))]
-  dt <- dt[, lapply(.SD, function(x) str_replace(x, "[?]", "NA"))]
+  dt <- dt[, lapply(.SD, function(x) str_replace(x, "Not in universe", NA_character_))]
+  dt <- dt[, lapply(.SD, function(x) str_replace(x, "[?]",NA_character_))]
   dt <- dt[, lapply(.SD, function(x) trimws(x))]
   
-  ## Clean up the binaries 
+  ## Count missing and store
+  missing <- colSums(is.na(dt))
+  
+  ## Take a snapshot of the data
+  dtSnapshot <- dt
   
   ### Binary for the dependent var
   dt[grepl(x = over50k, pattern = "-"), over50k := "0"]
@@ -198,6 +205,10 @@ censusCleaner <- function(dt){
                aboveMasters, divorced, married, single, householder, bothParents, children, whiteDivorcedF, 
                blackDivorcedF, hispanicDivorcedF, whiteDivorcedM, blackDivorcedM, hispanicDivorcedM, over50k)]
   
+  dt <- list(missingNum = missing,
+             missingPct = missing/nrow(dt),
+             dtClean = dt,
+             dtMessy = dtSnapshot)
   return(dt)
 }
 

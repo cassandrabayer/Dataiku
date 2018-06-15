@@ -20,16 +20,19 @@ summary(intData)
 
 # For the rest of the data, I was to get an idea of frequencies.
 
-for(i in 1:ncol(census_train)) {
-  histogram(census_train[,i, with = F], plot = names(census_train)[i])
-}
-
+library(reshape2)
+library(ggplot2)
+meltedCensus <- melt(census_train)
+ggplot(meltedCensus,aes(x = value)) + 
+    facet_wrap(~variable,scales = "free_x") + 
+    geom_histogram()
 
 ```
 
 I want to get a sense of any missing data still remaining in the data.
 ```{r}
 missmap(census_train, col=c("blue", "red"), legend=FALSE)
+
 ```
 
 Now I want to get a sense of how my variables are correlated. I suspect some covariance, but that's expected
@@ -71,7 +74,7 @@ lm2 <- glm(formula = over50k ~ ageSq + male + normalizedWageHr + foreignDad +
     wksWorkedPastYr + black + unemployed + belowCollege + college + 
     aboveMasters + married + householder + bothParents + blackDivorcedM + 
     hispanicDivorcedM, data = census_train, family = binomial(link = "logit"))
-abline(lm$residuals)
+
 anova(lm)
 anova(lm2)
 pR2(lm2)
@@ -97,6 +100,7 @@ auc <- performance(performance, measure = "auc")
 auc <- auc@y.values[[1]]
 auc
 
+
 ```
 But what about an SVM? https://www.r-bloggers.com/machine-learning-using-support-vector-machines/
 ```{r}
@@ -110,7 +114,9 @@ svm <- svm(over50k ~ ageSq + male + normalizedWageHr + foreignDad +
  
 #Use the predictions on the data
 svmPred <- predict(svm, census_train)
- 
+
+svm_roc <- prediction(svmPred, census_test$over50k)
+
 ```
 
 Compare errors between logit and svm
@@ -130,9 +136,18 @@ svm_error <- sqrt(mean(error_svm^2)) #.22
 
 Lastly, a decision tree http://trevorstephens.com/kaggle-titanic-tutorial/r-part-3-decision-trees/
 ```{r}
-fit <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,
-               data=train,
-               method="class")
+
+tree <- tree(over50k ~ ageSq + male + normalizedWageHr + foreignDad + 
+    wksWorkedPastYr + black + unemployed + belowCollege + college + 
+    aboveMasters + married + householder + bothParents + blackDivorcedM + 
+    hispanicDivorcedM, data = census_train, method = "class")
+summary(tree)
+
+pred <- predict(tree, newdata=census_test)
+
+roc_pred <- prediction(pred, census_test$over50k)
+plot(performance(roc_pred, measure="tpr", x.measure="fpr"), colorize=TRUE)
+
 ```
 
 Choose the model that appears to have the highest performance based on a comparison between reality (the 42nd variable) and the model’s prediction. 
