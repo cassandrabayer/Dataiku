@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1529066104266.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8C05FD2A",
+    "lastKnownWriteTime" : 4611686018773776676,
+    "last_content_update" : 1529066104266,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "e0263a97007141cc8514bd0d29d7d7b4",
+        "name" : "boxplot(intData)",
+        "title" : "boxplot(intData)"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

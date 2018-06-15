@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1528933942236.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F158B72F",
+    "lastKnownWriteTime" : 1529065458,
+    "last_content_update" : 1529065458923,
+    "path" : "~/Desktop/Dataiku/controller.R",
+    "project_path" : "controller.R",
+    "properties" : {
+        "cursorPosition" : "54,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
