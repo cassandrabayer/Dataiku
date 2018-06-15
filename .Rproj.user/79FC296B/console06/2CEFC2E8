@@ -486,3 +486,74 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Added a quick shiny for basic regression testing
 bash: Added: command not found
 ]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ Added a quick shiny for basic regression testing[1P echo E78626B5 && /usr/bin/env && echo E70DE0C2[K[12Pgit commit -m added viz and shiny"[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kadd .
+]0;~/Desktop/DataikuCassandras-MacBook-Air:Dataiku cassandrabayer$ git commit -m "added shiny for basic regression testing"
+[master d8fff81] added shiny for basic regression testing
+ 74 files changed, 904 insertions(+), 42 deletions(-)
+ create mode 100644 .Rhistory
+ rewrite .Rproj.user/79FC296B/console06/INDEX001 (100%)
+ create mode 100644 .Rproj.user/79FC296B/explorer-cache/e0263a97007141cc8514bd0d29d7d7b4
+ create mode 100644 .Rproj.user/79FC296B/pcs/debug-breakpoints.pper
+ create mode 100644 .Rproj.user/79FC296B/pcs/files-pane.pper
+ create mode 100644 .Rproj.user/79FC296B/pcs/source-pane.pper
+ create mode 100644 .Rproj.user/79FC296B/pcs/windowlayoutstate.pper
+ create mode 100644 .Rproj.user/79FC296B/pcs/workbench-pane.pper
+ create mode 100644 .Rproj.user/79FC296B/persistent-state
+ create mode 100644 .Rproj.user/79FC296B/rmd-outputs
+ create mode 100644 .Rproj.user/79FC296B/saved_source_markers
+ create mode 100644 .Rproj.user/79FC296B/sources/prop/91CB3262
+ create mode 100644 .Rproj.user/79FC296B/sources/prop/C164E2AC
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/65F80AC4-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/6C0E7E13-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/7F876B80-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/9A550313-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/AA5CB0D3-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/AE5B78D-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/C0DE7C6D-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/CB332994-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/E92E08AA-contents
+ delete mode 100644 .Rproj.user/79FC296B/sources/s-211DBB81/EC7FA2A4-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-A783E30B/50FCAC1B
+ create mode 100644 .Rproj.user/79FC296B/sources/s-A783E30B/50FCAC1B-contents
+ create mode 100644 .Rproj.user/79FC296B/sources/s-A783E30B/6C106AE6
+ create mode 100644 .Rproj.user/79FC296B/sources/s-A783E30B/6C106AE6-contents
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81 => s-A783E30B}/76E1E504 (100%)
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81 => s-A783E30B}/76E1E504-contents (100%)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-A783E30B/8C05FD2A
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81/36866C08-contents => s-A783E30B/8C05FD2A-contents} (100%)
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81 => s-A783E30B}/9F0BC23C (71%)
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81 => s-A783E30B}/9F0BC23C-contents (69%)
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81 => s-A783E30B}/F158B72F (70%)
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81 => s-A783E30B}/F158B72F-contents (99%)
+ create mode 100644 .Rproj.user/79FC296B/sources/s-A783E30B/F2A69F16
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81/3E43F971-contents => s-A783E30B/F2A69F16-contents} (100%)
+ rename .Rproj.user/79FC296B/sources/{s-211DBB81/46543223-contents => s-A783E30B/lock_file} (100%)
+ create mode 100644 .Rproj.user/79FC296B/viewer-cache/9CF2CCF.Rdata
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296B211DBB81/chunks.json (94%)
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/79FC296BA783E30B/chunks.json
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c1ifymotllh4d/000022.png
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c1ifymotllh4d/000022.snapshot
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000008.metadata
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000008.png
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6hjvwu7rkfle/000008.snapshot
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c6il06tyzny5e/000007.error
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c94682qkyf8tz/00001e.metadata
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c94682qkyf8tz/00001e.png
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/c94682qkyf8tz/00001e.snapshot
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cbar1qrm7k76n/000007.metadata
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cbar1qrm7k76n/000007.png
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cbar1qrm7k76n/000007.snapshot
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cfit1caozk1r8/000017.error
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cgjss3v8bpj6o/000003.metadata
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cgjss3v8bpj6o/000003.png
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cgjss3v8bpj6o/000003.snapshot
+ rewrite .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/chunks.json (91%)
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cis6pfwpwsegy/000003.metadata
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cis6pfwpwsegy/000003.png
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cis6pfwpwsegy/000003.snapshot
+ delete mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cp5ac5korcnmu/000011.error
+ rename .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/{c1ifymotllh4d/000022.metadata => cvh2kaay38eeh/00000c.metadata} (100%)
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cvh2kaay38eeh/00000c.png
+ create mode 100644 .Rproj.user/shared/notebooks/5DC9D500-modelingAnalysis/1/s/cvh2kaay38eeh/00000c.snapshot
+ create mode 100644 server.R
+ create mode 100644 ui.R
+git add .

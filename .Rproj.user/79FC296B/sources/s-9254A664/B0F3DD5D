@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1529082157450.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B0F3DD5D",
+    "lastKnownWriteTime" : 6,
+    "last_content_update" : 1529082157450,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "0bdc761a8a3b489c9c1b2982be8ffa5f",
+        "name" : "svm",
+        "title" : "svm"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}
