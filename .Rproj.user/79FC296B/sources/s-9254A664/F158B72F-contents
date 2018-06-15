@@ -18,6 +18,7 @@ library(Hmisc)
 library(RColorBrewer)
 library(rpart.plot)
 library(reshape2)
+library(shiny)
 
 
 # basic stats and prediction
