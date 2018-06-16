@@ -8,7 +8,9 @@ Source the controller, wherein necessary packages and custom functions get read 
 reads in the data and uses a cleaning function to get it in a place that we can work with it. I then separate 
 out my cleaned data and prepare to work with it.
 
-```{r}
+```{r, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+setwd("/Users/cassandrabayer/Desktop/Dataiku")
 source("controller.R")
 full_train <- census_train
 full_test <- census_test
@@ -83,7 +85,7 @@ This gives me a playground to do more work with variable selection. Given the ti
 I'd use as a gut check for feature selection when building a model.
 ```{r}
 # runApp()
-
+# available at https://cassandrabayer.shinyapps.io/Dataiku/
 ```
 
 First, I run a simple logistic regression using all the variables in my arsenal. The output shows me that,

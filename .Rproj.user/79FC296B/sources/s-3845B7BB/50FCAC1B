@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1529066682457.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "50FCAC1B",
+    "lastKnownWriteTime" : 1529118275,
+    "last_content_update" : 1529118275494,
+    "path" : "~/Desktop/Dataiku/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "5,2",
+        "scrollLine" : "0",
+        "source_window_id" : "wr4qy56myfbxt",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

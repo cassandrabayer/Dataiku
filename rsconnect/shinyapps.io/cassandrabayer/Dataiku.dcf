@@ -1,0 +1,12 @@
+name: Dataiku
+title: Dataiku
+username:
+account: cassandrabayer
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 361815
+bundleId: 1432491
+url: https://cassandrabayer.shinyapps.io/Dataiku/
+when: 1529119562.40389
+asMultiple: FALSE
+asStatic: FALSE
